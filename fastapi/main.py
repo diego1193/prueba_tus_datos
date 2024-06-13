@@ -1,6 +1,5 @@
 from fastapi import FastAPI, HTTPException, Depends, status
 from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
-from pydantic import BaseModel
 import pandas as pd
 import numpy as np
 
@@ -35,7 +34,7 @@ def login(form_data: OAuth2PasswordRequestForm = Depends()):
 async def read_procesos(token: str = Depends(oauth2_scheme)):
     try:
         # Carga el archivo CSV que contiene los datos de los procesos.
-        df = pd.read_csv("../web_scraping_csv/base_de_datos.csv")
+        df = pd.read_csv("../base_de_datos.csv")
 
         # Reemplaza los valores infinitos y NaN por None para asegurar la compatibilidad con JSON.
         df.replace([np.inf, -np.inf, np.nan], None, inplace=True)

@@ -50,7 +50,7 @@ uvicorn main:app --reload
 Para ejecutar los tests asociadosa la API:
 
 ```bash
-pytest-3 test.py
+pytest-3 test_main.py
 ```
 
 ### Documentación y Uso de la API
